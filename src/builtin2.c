@@ -1,32 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   builtin2.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: elebouch <elebouch@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/02/07 15:49:26 by elebouch          #+#    #+#             */
-/*   Updated: 2018/02/07 18:01:30 by elebouch         ###   ########.fr       */
+/*   Created: 2018/02/07 18:28:40 by elebouch          #+#    #+#             */
+/*   Updated: 2018/02/07 18:44:52 by elebouch         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "minishell.h"
-
-int main(void)
+int	bltin_setenv(char **args)
 {
-	char *line;
-	char **args;
+	(void)args;
+	return (0);
+}
 
-	while(42)
-	{
-		ft_printf("$> ");
-		if (get_next_line(0, &line) == -1)
-			exit(EXIT_FAILURE);
-		args = split_whitespaces(line);
-		if (execute(args) == 0)
-			exit(EXIT_FAILURE);
-		freearr(&args);
-		free(line);
-	}
-	exit(EXIT_SUCCESS);
+int bltin_unsetenv(char **args)
+{
+	(void)args;
+	return (0);
+}
+
+int bltin_env(char **args)
+{
+	(void)args;
+	return (0);
 }

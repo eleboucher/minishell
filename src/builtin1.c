@@ -1,32 +1,36 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   builtin1.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: elebouch <elebouch@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/02/07 15:49:26 by elebouch          #+#    #+#             */
-/*   Updated: 2018/02/07 18:01:30 by elebouch         ###   ########.fr       */
+/*   Created: 2018/02/07 18:27:07 by elebouch          #+#    #+#             */
+/*   Updated: 2018/02/07 18:44:30 by elebouch         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
-int main(void)
+int	bltin_echo(char **args)
 {
-	char *line;
-	char **args;
+	if (!args[1])
+		return (0);
+	ft_printf("%s",args[1]);
+	return (1);
+}
 
-	while(42)
-	{
-		ft_printf("$> ");
-		if (get_next_line(0, &line) == -1)
-			exit(EXIT_FAILURE);
-		args = split_whitespaces(line);
-		if (execute(args) == 0)
-			exit(EXIT_FAILURE);
-		freearr(&args);
-		free(line);
-	}
-	exit(EXIT_SUCCESS);
+int bltin_cd(char **args)
+{
+	if (!args[1])
+		return (0);
+	if (chdir(args[1]) != 0)
+		ft_printf("error\n");
+	return (1);
+}
+
+int bltin_exit(char **args)
+{
+	(void)args;
+	return (0);
 }

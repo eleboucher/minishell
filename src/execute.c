@@ -1,32 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   execute.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: elebouch <elebouch@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/02/07 15:49:26 by elebouch          #+#    #+#             */
-/*   Updated: 2018/02/07 18:01:30 by elebouch         ###   ########.fr       */
+/*   Created: 2018/02/07 18:04:58 by elebouch          #+#    #+#             */
+/*   Updated: 2018/02/07 18:39:38 by elebouch         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
-int main(void)
+int	execute(char **args)
 {
-	char *line;
-	char **args;
+	static char	*bltin_str[] = {"echo", "cd", "env", "setenv",
+		"unsetenv", "exit"};
+	static int	(*bltin_func[]) (char **) = { &bltin_echo, &bltin_cd,
+		&bltin_exit, &bltin_setenv, &bltin_unsetenv, bltin_env};
+	int 		i;
 
-	while(42)
+	i = -1;
+	if (!args[0])
+		return (1);
+	while(++i < 6)
 	{
-		ft_printf("$> ");
-		if (get_next_line(0, &line) == -1)
-			exit(EXIT_FAILURE);
-		args = split_whitespaces(line);
-		if (execute(args) == 0)
-			exit(EXIT_FAILURE);
-		freearr(&args);
-		free(line);
+		if (!ft_strcmp(args[0], bltin_str[i])) 
+			return (bltin_func[i](args));
 	}
-	exit(EXIT_SUCCESS);
+	return (cmd_launch(args));
 }

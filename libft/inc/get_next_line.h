@@ -1,32 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   get_next_line.h                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: elebouch <elebouch@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/02/07 15:49:26 by elebouch          #+#    #+#             */
-/*   Updated: 2018/02/07 18:01:30 by elebouch         ###   ########.fr       */
+/*   Created: 2017/10/13 12:48:22 by elebouch          #+#    #+#             */
+/*   Updated: 2017/11/20 14:52:34 by elebouch         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "minishell.h"
+#ifndef GET_NEXT_LINE_H
+# define GET_NEXT_LINE_H
 
-int main(void)
-{
-	char *line;
-	char **args;
+# include "libft.h"
+# include <stdlib.h>
 
-	while(42)
-	{
-		ft_printf("$> ");
-		if (get_next_line(0, &line) == -1)
-			exit(EXIT_FAILURE);
-		args = split_whitespaces(line);
-		if (execute(args) == 0)
-			exit(EXIT_FAILURE);
-		freearr(&args);
-		free(line);
-	}
-	exit(EXIT_SUCCESS);
-}
+# define BUFF_SIZE 32
+
+int					get_next_line(int const fd, char **line);
+#endif

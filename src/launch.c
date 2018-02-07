@@ -1,32 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   launch.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: elebouch <elebouch@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/02/07 15:49:26 by elebouch          #+#    #+#             */
-/*   Updated: 2018/02/07 18:01:30 by elebouch         ###   ########.fr       */
+/*   Created: 2018/02/07 18:06:40 by elebouch          #+#    #+#             */
+/*   Updated: 2018/02/07 18:19:10 by elebouch         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
-int main(void)
+int		cmd_launch(char **args)
 {
-	char *line;
-	char **args;
+	pid_t pid;
 
-	while(42)
+	pid = fork();
+	if (!pid)
 	{
-		ft_printf("$> ");
-		if (get_next_line(0, &line) == -1)
-			exit(EXIT_FAILURE);
-		args = split_whitespaces(line);
-		if (execute(args) == 0)
-			exit(EXIT_FAILURE);
-		freearr(&args);
-		free(line);
+		if (execve(args[0], args, NULL) == -1)
+			ft_printf("error\n");
+		return (0);
 	}
-	exit(EXIT_SUCCESS);
+	else if (pid < 0)
+			ft_printf("error\n");
+	else
+		wait(0);
+	return (1);
+
 }

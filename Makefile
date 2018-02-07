@@ -6,7 +6,7 @@
 #    By: elebouch <elebouch@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/02/07 15:25:29 by elebouch          #+#    #+#              #
-#    Updated: 2018/02/07 16:34:22 by elebouch         ###   ########.fr        #
+#    Updated: 2018/02/07 18:30:12 by elebouch         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -16,9 +16,9 @@ SRC_DIR = ./src/
 OBJ_DIR = ./obj/
 CC = gcc
 CFLAGS = -Wall -Werror -Wextra $(INCLUDE)
-CPPFLAGS = -I./inc -I./libft/includes
+CPPFLAGS = -I./inc -I./libft/inc
 LDFLAGS = -Llibft/
-LDLIBS = -lftprintf
+LDLIBS = -lft
 MAKE = make
 RM = rm -f
 
@@ -26,7 +26,13 @@ HEADER = \
 		inc/minishell.h \
 
 SRC= \
-	 main.c \
+	 execute.c \
+	free.c \
+	launch.c \
+	main.c \
+	split_whitespaces.c \
+	builtin1.c \
+	builtin2.c \
 
 OBJ = $(addprefix $(OBJ_DIR), $(SRC:.c=.o))
 
