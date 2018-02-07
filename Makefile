@@ -6,7 +6,7 @@
 #    By: elebouch <elebouch@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/02/07 15:25:29 by elebouch          #+#    #+#              #
-#    Updated: 2018/02/07 16:13:43 by elebouch         ###   ########.fr        #
+#    Updated: 2018/02/07 16:34:22 by elebouch         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -16,14 +16,15 @@ SRC_DIR = ./src/
 OBJ_DIR = ./obj/
 CC = gcc
 CFLAGS = -Wall -Werror -Wextra $(INCLUDE)
-CPPFLAGS = -I./includes -I./libft/includes
+CPPFLAGS = -I./inc -I./libft/includes
 LDFLAGS = -Llibft/
 LDLIBS = -lftprintf
 MAKE = make
-
+RM = rm -f
 
 HEADER = \
-		includes/minishell.h
+		inc/minishell.h \
+
 SRC= \
 	 main.c \
 
@@ -41,20 +42,21 @@ lib:
 	@$(MAKE) -C libft/
 
 obj/%.o: src/%.c $(HEADER) 
-	@mkdir -p $(OBJ_DIR)
+	@mkdir $(OBJ_DIR) 2> /dev/null || true
 	@$(CC) $(CFLAGS) $(CPPFLAGS)  -o $@ -c $<
 
 clean:
 	@$(MAKE) clean -C libft/
-	@rm -rf $(OBJ)
+	@$(RM) $(OBJ)
+	@rmdir  $(OBJ_DIR) 2> /dev/null || true
 
 fclean: clean
 	@$(MAKE) fclean -C libft/
-	@rm -rf $(NAME)
+	@$(RM) $(NAME)
 
 re: 
 	@$(MAKE) fclean 
 	@$(MAKE) all
 
-.PHONY: clean  fclean re all lib
+.PHONY: clean fclean re all lib
 
