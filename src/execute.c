@@ -12,21 +12,64 @@
 
 #include "minishell.h"
 
-int	execute(char **args)
+char	*get_bin(char *cmd, char *paths)
+{
+	char **split;
+	char *tmp;
+	struct stat stats;
+	int i;
+	int status;
+
+	i = -1;
+	if (!paths)
+		return (NULL);
+	if (!(split = ft_strsplit(paths, ':')))
+		return (NULL);
+	while (split[++i])
+	{
+		tmp = (split[i][ft_strlen(split[i]) - 1] == '/') ? ft_strdup(split[i]):
+			ft_strjoin(split[i], "/");
+		tmp = ft_strcleanjoin(tmp, cmd);
+		if (!(status = stat(tmp, &stats)))
+			break;
+		else 
+			free(tmp);
+	}
+	return ((status == -1) ? NULL : tmp);
+}
+
+t_cmd	*get_path(char **env, char *cmd)
+{
+	int		i;
+	t_cmd	*data;
+
+	i = -1;
+	if (!(data = (t_cmd*) malloc(sizeof(t_cmd))))
+		return (0);
+	while (env[++i])
+		if (!ft_strncmp(env[i], "PATH=", 5))
+			break ;
+	data->path = ft_strsub(env[i], 6, ft_strlen(env[i]));
+	data->bin = get_bin(cmd, data->path);
+	data->cmd = ft_strdup(cmd);
+	return (data);
+}
+
+int	execute(char **args, char **env)
 {
 	static char	*bltin_str[] = {"echo", "cd", "env", "setenv",
 		"unsetenv", "exit"};
 	static int	(*bltin_func[]) (char **) = { &bltin_echo, &bltin_cd,
 		&bltin_exit, &bltin_setenv, &bltin_unsetenv, bltin_env};
 	int 		i;
+	t_cmd		*data;
 
 	i = -1;
 	if (!args[0])
 		return (1);
 	while(++i < 6)
-	{
-		if (!ft_strcmp(args[0], bltin_str[i])) 
+		if (!ft_strcmp(args[0], bltin_str[i]))
 			return (bltin_func[i](args));
-	}
-	return (cmd_launch(args));
+	data = get_path(env, args[0]);
+	return (cmd_launch(data, args, env));
 }

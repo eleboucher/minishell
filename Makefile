@@ -26,7 +26,7 @@ HEADER = \
 		inc/minishell.h \
 
 SRC= \
-	 execute.c \
+	execute.c \
 	free.c \
 	launch.c \
 	main.c \
@@ -39,15 +39,14 @@ OBJ = $(addprefix $(OBJ_DIR), $(SRC:.c=.o))
 all: lib $(NAME)
 
 $(NAME):  $(OBJ)
-	@echo "\033[94mCompiling ft_ls\033[0m"
+	@echo "\n\033[94mCompiling ft_ls\033[0m"
 	@$(CC) $(CFLAGS) $(CPPFLAGS)  $(OBJ)  -o $(NAME) $(LDFLAGS) $(LDLIBS)
 	@echo  "\033[34mDone\033[0m"
 
 lib:
-	@echo "\033[94mCompiling libft and printf\033[0m"
 	@$(MAKE) -C libft/
 
-obj/%.o: src/%.c $(HEADER) 
+obj/%.o: src/%.c $(HEADER)
 	@mkdir $(OBJ_DIR) 2> /dev/null || true
 	@$(CC) $(CFLAGS) $(CPPFLAGS)  -o $@ -c $<
 

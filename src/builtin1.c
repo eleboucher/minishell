@@ -15,15 +15,15 @@
 int	bltin_echo(char **args)
 {
 	if (!args[1])
-		return (0);
-	ft_printf("%s",args[1]);
+		return (1);
+	ft_printf("%s\n",args[1]);
 	return (1);
 }
 
 int bltin_cd(char **args)
 {
 	if (!args[1])
-		return (0);
+		return (1);
 	if (chdir(args[1]) != 0)
 		ft_printf("error\n");
 	return (1);
