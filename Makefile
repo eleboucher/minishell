@@ -6,7 +6,7 @@
 #    By: elebouch <elebouch@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/02/07 15:25:29 by elebouch          #+#    #+#              #
-#    Updated: 2018/02/14 16:09:37 by elebouch         ###   ########.fr        #
+#    Updated: 2018/02/14 17:51:28 by elebouch         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -15,7 +15,7 @@ NAME=minishell
 SRC_DIR = ./src/
 OBJ_DIR = ./obj/
 CC = gcc
-CFLAGS = -Wall -Werror -Wextra $(INCLUDE)
+CFLAGS = -Wall -Werror -Wextra $(INCLUDE) -g
 CPPFLAGS = -I./inc -I./libft/inc
 LDFLAGS = -Llibft/
 LDLIBS = -lft
@@ -36,7 +36,8 @@ SRC= \
 	bltin_env.c \
 	bltin_setenv.c \
 	bltin_unsetenv.c \
-	bltin_exit.c
+	bltin_exit.c \
+	env.c
 
 OBJ = $(addprefix $(OBJ_DIR), $(SRC:.c=.o))
 

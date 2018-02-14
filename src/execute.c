@@ -6,7 +6,7 @@
 /*   By: elebouch <elebouch@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/07 18:04:58 by elebouch          #+#    #+#             */
-/*   Updated: 2018/02/14 17:22:47 by elebouch         ###   ########.fr       */
+/*   Updated: 2018/02/14 18:19:37 by elebouch         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,7 @@ char	*get_bin(char *cmd, char *paths)
 		else
 			free(tmp);
 	}
-	return ((status == -1) ? NULL : tmp);
+	return ((status == -1) ? cmd : tmp);
 }
 
 t_cmd	*get_path(char **env, char *cmd)
@@ -44,12 +44,15 @@ t_cmd	*get_path(char **env, char *cmd)
 	t_cmd	*data;
 
 	i = -1;
-	if (!(data = (t_cmd*) malloc(sizeof(t_cmd))))
+	if (!(data = (t_cmd*)malloc(sizeof(t_cmd))))
 		return (0);
 	while (env[++i])
 		if (!ft_strncmp(env[i], "PATH=", 5))
 			break ;
-	data->path = ft_strsub(env[i], 6, ft_strlen(env[i]));
+	if (env[i])
+		data->path = ft_strsub(env[i], 6, ft_strlen(env[i]));
+	else
+		data->path = NULL;
 	data->bin = get_bin(cmd, data->path);
 	data->cmd = ft_strdup(cmd);
 	return (data);

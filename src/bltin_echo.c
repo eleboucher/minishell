@@ -6,24 +6,41 @@
 /*   By: elebouch <elebouch@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/14 15:51:07 by elebouch          #+#    #+#             */
-/*   Updated: 2018/02/14 17:19:27 by elebouch         ###   ########.fr       */
+/*   Updated: 2018/02/14 18:04:25 by elebouch         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
-static void print_for_each(char *str)
+static void print_for_each(char *str, char ***env)
 {
-	size_t start;
-	size_t end;
+	size_t	start;
+	size_t	end;
+	size_t	j;
+	int		quote;
 
 	start = (str[0] == '\'' || str[0] == '\"') ? 1 : 0;
-	end = ft_strlen(str);
-	end = (str[end - 1] == '\'' || str[end - 1] == '\"')? end - 2 : end;
-	ft_putnstr(str + start, end);
+	quote = (str[0] == '\'') ? 1 : 0;
+	end = (str[ft_strlen(str) - 1] == '\'' || str[ft_strlen(str) - 1] == '\"')?
+		ft_strlen(str) - 1 : ft_strlen(str);
+	while (start < end)
+	{
+		j = start;
+		if (str[start] == '$' && !quote)
+		{
+			start++;
+			while(j < end &&!ft_isspace(str[j]))
+				j++;
+			print_fromenv(*env, ft_strsub(str, start, j));
+			start = j;
+		}
+		else
+			ft_putchar(str[start]);
+		start++;
+	}
 }
 
-static void print_echo(char **args)
+static void print_echo(char **args, char ***env)
 {
 	size_t i;
 	size_t size;
@@ -38,7 +55,7 @@ static void print_echo(char **args)
 	{
 		if (i)
 			write (1, " ", 1);
-		print_for_each(args[i++]);
+		print_for_each(args[i++], env);
 	}
 }
 
@@ -47,7 +64,6 @@ int	bltin_echo(char **args, char ***env)
 	int fg_n;
 
 	fg_n = 0;
-	(void)env;
 	if (!args[1])
 	{
 		ft_putchar('\n');
@@ -55,7 +71,7 @@ int	bltin_echo(char **args, char ***env)
 	}
 	if (!ft_strncmp(args[1], "-n", 2))
 		fg_n = 1;
-	print_echo(args + ((fg_n)? 2 : 1));
+	print_echo(args + ((fg_n)? 2 : 1), env);
 	if (!fg_n)
 		ft_putchar('\n');
 	return (1);

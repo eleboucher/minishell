@@ -6,7 +6,7 @@
 /*   By: elebouch <elebouch@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/07 15:50:26 by elebouch          #+#    #+#             */
-/*   Updated: 2018/02/14 17:18:40 by elebouch         ###   ########.fr       */
+/*   Updated: 2018/02/14 17:48:59 by elebouch         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,4 +38,5 @@ int		bltin_exit(char **args, char ***env);
 int		bltin_setenv(char **args, char ***env);
 int		bltin_unsetenv(char **args, char ***env);
 int 	bltin_env(char **args, char ***env);
+void    print_fromenv(char **env, char *var);
 #endif
