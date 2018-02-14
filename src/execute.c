@@ -6,7 +6,7 @@
 /*   By: elebouch <elebouch@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/07 18:04:58 by elebouch          #+#    #+#             */
-/*   Updated: 2018/02/07 18:39:38 by elebouch         ###   ########.fr       */
+/*   Updated: 2018/02/14 15:46:16 by elebouch         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ char	*get_bin(char *cmd, char *paths)
 		tmp = ft_strcleanjoin(tmp, cmd);
 		if (!(status = stat(tmp, &stats)))
 			break;
-		else 
+		else
 			free(tmp);
 	}
 	return ((status == -1) ? NULL : tmp);

@@ -6,7 +6,7 @@
 #    By: elebouch <elebouch@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/02/07 15:25:29 by elebouch          #+#    #+#              #
-#    Updated: 2018/02/07 18:30:12 by elebouch         ###   ########.fr        #
+#    Updated: 2018/02/14 16:09:37 by elebouch         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -31,15 +31,19 @@ SRC= \
 	launch.c \
 	main.c \
 	split_whitespaces.c \
-	builtin1.c \
-	builtin2.c \
+	bltin_cd.c \
+	bltin_echo.c \
+	bltin_env.c \
+	bltin_setenv.c \
+	bltin_unsetenv.c \
+	bltin_exit.c
 
 OBJ = $(addprefix $(OBJ_DIR), $(SRC:.c=.o))
 
 all: lib $(NAME)
 
 $(NAME):  $(OBJ)
-	@echo "\n\033[94mCompiling ft_ls\033[0m"
+	@echo "\n\033[94mCompiling minishell\033[0m"
 	@$(CC) $(CFLAGS) $(CPPFLAGS)  $(OBJ)  -o $(NAME) $(LDFLAGS) $(LDLIBS)
 	@echo  "\033[34mDone\033[0m"
 
@@ -59,9 +63,8 @@ fclean: clean
 	@$(MAKE) fclean -C libft/
 	@$(RM) $(NAME)
 
-re: 
-	@$(MAKE) fclean 
+re:
+	@$(MAKE) fclean
 	@$(MAKE) all
 
 .PHONY: clean fclean re all lib
-
