@@ -1,19 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   btlin_exit.c                                       :+:      :+:    :+:   */
+/*   bltin_exit.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: elebouch <elebouch@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/14 15:53:53 by elebouch          #+#    #+#             */
-/*   Updated: 2018/02/14 15:54:36 by elebouch         ###   ########.fr       */
+/*   Updated: 2018/02/14 17:17:16 by elebouch         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
-int bltin_exit(char **args)
+int bltin_exit(char **args, char ***env)
 {
 	(void)args;
+	(void)env;
 	return (0);
 }
