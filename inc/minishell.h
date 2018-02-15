@@ -6,7 +6,7 @@
 /*   By: elebouch <elebouch@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/07 15:50:26 by elebouch          #+#    #+#             */
-/*   Updated: 2018/02/14 17:48:59 by elebouch         ###   ########.fr       */
+/*   Updated: 2018/02/15 12:18:14 by elebouch         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ typedef	struct		s_cmd
 
 char	**split_whitespaces(char const *s);
 void	freearr(char ***arr);
-int		execute(char **args, char **env);
+int		execute(char **args, char ***env);
 int		cmd_launch(t_cmd *data, char **args, char **env);
 int		bltin_echo(char **args, char ***env);
 int 	bltin_cd(char **args, char ***env);

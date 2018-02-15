@@ -6,11 +6,18 @@
 /*   By: elebouch <elebouch@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/14 15:51:46 by elebouch          #+#    #+#             */
-/*   Updated: 2018/02/14 17:18:55 by elebouch         ###   ########.fr       */
+/*   Updated: 2018/02/15 12:00:13 by elebouch         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
+
+
+/*
+** stat(path, info) == -1 == "No such file or directory"
+** S_ISDIR(info->st_mode) != 1 == "Not a directory"
+** access(path, X_OK) == -1 == "Permission denied"
+*/
 
 int bltin_cd(char **args, char ***env)
 {

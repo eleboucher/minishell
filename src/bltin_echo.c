@@ -6,7 +6,7 @@
 /*   By: elebouch <elebouch@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/14 15:51:07 by elebouch          #+#    #+#             */
-/*   Updated: 2018/02/14 18:04:25 by elebouch         ###   ########.fr       */
+/*   Updated: 2018/02/15 16:08:38 by elebouch         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,6 @@ static void print_echo(char **args, char ***env)
 {
 	size_t i;
 	size_t size;
-
 
 	i = 0;
 	size = 0;
