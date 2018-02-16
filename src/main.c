@@ -6,7 +6,7 @@
 /*   By: elebouch <elebouch@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/07 15:49:26 by elebouch          #+#    #+#             */
-/*   Updated: 2018/02/15 16:55:15 by elebouch         ###   ########.fr       */
+/*   Updated: 2018/02/16 12:03:50 by elebouch         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,7 @@ char	**ft_arrdup(char **arr)
 {
 	int i;
 	char **ret;
+
 
 	i = -1;
 	if (!(ret = (char**)malloc(sizeof(char*) * (ft_arrsize(arr) + 1))))

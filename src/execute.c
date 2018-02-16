@@ -6,7 +6,7 @@
 /*   By: elebouch <elebouch@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/07 18:04:58 by elebouch          #+#    #+#             */
-/*   Updated: 2018/02/15 12:17:57 by elebouch         ###   ########.fr       */
+/*   Updated: 2018/02/16 11:58:19 by elebouch         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,6 +70,7 @@ int	execute(char **args, char ***env)
 	i = -1;
 	if (!args[0])
 		return (1);
+	
 	while(++i < 6)
 		if (!ft_strcmp(args[0], bltin_str[i]))
 			return (bltin_func[i](args, env));

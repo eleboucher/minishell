@@ -6,15 +6,52 @@
 /*   By: elebouch <elebouch@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/14 15:56:42 by elebouch          #+#    #+#             */
-/*   Updated: 2018/02/14 17:21:51 by elebouch         ###   ########.fr       */
+/*   Updated: 2018/02/16 12:01:02 by elebouch         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
+void	change_env(char ***env, char *var, char *value)
+{
+	int		index;
+	char	*tmp;
+	char 	**envi;
+
+	index = get_index_fromenv(*env, var);
+	tmp = ft_strjoin("=", value);
+	envi = *env;
+	if (envi[index])
+	{
+		free(envi[index]);
+		if (value)
+			envi[index] = ft_strjoin(var, tmp);
+		else
+			envi[index] = ft_strjoin(var, "=");
+	}
+	else
+	{
+		envi = realloc_env(envi, index + 1);
+		if (value)
+			envi[index] = ft_strjoin(var, tmp);
+		else
+			envi[index] = ft_strjoin(var, "=");
+	}
+	free(tmp);
+}
+
 int	bltin_setenv(char **args, char ***env)
 {
-	(void)args;
-	(void)env;
-	return (0);
+	if (!args[1])
+		bltin_env(args, env);
+	if (args[2])
+	{
+			if (args[3])
+			{
+				ft_putendl("setenv: Too many arguments.");
+				return (1);
+			}
+			change_env(env, args[1], args[2]);
+	}
+	return (1);
 }

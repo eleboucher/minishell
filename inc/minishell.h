@@ -6,7 +6,7 @@
 /*   By: elebouch <elebouch@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/07 15:50:26 by elebouch          #+#    #+#             */
-/*   Updated: 2018/02/15 12:18:14 by elebouch         ###   ########.fr       */
+/*   Updated: 2018/02/16 11:38:22 by elebouch         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,5 +38,10 @@ int		bltin_exit(char **args, char ***env);
 int		bltin_setenv(char **args, char ***env);
 int		bltin_unsetenv(char **args, char ***env);
 int 	bltin_env(char **args, char ***env);
-void    print_fromenv(char **env, char *var);
+void  print_fromenv(char **env, char *var);
+int 	get_index_fromenv(char **env, char *var);
+char **realloc_env(char **env, int size);
+char *get_fromenv(char **env, char *var);
+void	change_env(char ***env, char *var, char *value);
+void	changedir(char *path, char ***env);
 #endif
