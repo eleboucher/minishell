@@ -6,7 +6,7 @@
 /*   By: elebouch <elebouch@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/07 18:04:58 by elebouch          #+#    #+#             */
-/*   Updated: 2018/02/16 17:20:39 by elebouch         ###   ########.fr       */
+/*   Updated: 2018/02/16 17:40:40 by elebouch         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,9 +22,9 @@ char	*get_bin(char *cmd, char *paths)
 
 	i = -1;
 	if (!paths)
-		return (NULL);
+		return (ft_strdup(cmd));
 	if (!(split = ft_strsplit(paths, ':')))
-		return (NULL);
+		return (ft_strdup(cmd));
 	while (split[++i])
 	{
 		tmp = (split[i][ft_strlen(split[i]) - 1] == '/') ? ft_strdup(split[i]):
@@ -36,7 +36,7 @@ char	*get_bin(char *cmd, char *paths)
 			free(tmp);
 	}
 	freearr(&split);
-	return ((status == -1) ? cmd : tmp);
+	return ((status == -1) ? ft_strdup(cmd) : tmp);
 }
 
 t_cmd	*get_path(char **env, char *cmd)
@@ -71,7 +71,6 @@ int	execute(char **args, char ***env)
 	i = -1;
 	if (!args[0])
 		return (1);
-	
 	while(++i < 6)
 		if (!ft_strcmp(args[0], bltin_str[i]))
 			return (bltin_func[i](args, env));
