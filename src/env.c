@@ -6,7 +6,7 @@
 /*   By: elebouch <elebouch@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/14 17:33:20 by elebouch          #+#    #+#             */
-/*   Updated: 2018/02/16 12:55:44 by elebouch         ###   ########.fr       */
+/*   Updated: 2018/02/16 13:00:03 by elebouch         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,8 +17,6 @@ char **realloc_env(char **env, int size)
 	char **new;
 	int	i;
 
-	printf("%zu\n",ft_arrsize(env));
-	printf("%d\n", size);
 	if (!(new = (char **)malloc(sizeof(char*) * (size + 1))))
 		return (NULL);
 	i = -1;
@@ -29,7 +27,6 @@ char **realloc_env(char **env, int size)
 		free(env[i]);
 	}
 	free(env);
-	printf("%zu\n",ft_arrsize(new));
 	return(new);
 }
 
