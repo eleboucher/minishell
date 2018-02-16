@@ -6,7 +6,7 @@
 /*   By: elebouch <elebouch@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/07 15:49:26 by elebouch          #+#    #+#             */
-/*   Updated: 2018/02/16 12:03:50 by elebouch         ###   ########.fr       */
+/*   Updated: 2018/02/16 17:12:19 by elebouch         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,5 +47,6 @@ int main(int argc, char **argv, char **environ)
 		freearr(&args);
 		free(line);
 	}
+	freearr(&env);
 	exit(EXIT_SUCCESS);
 }

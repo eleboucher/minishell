@@ -6,7 +6,7 @@
 /*   By: elebouch <elebouch@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/07 18:04:58 by elebouch          #+#    #+#             */
-/*   Updated: 2018/02/16 11:58:19 by elebouch         ###   ########.fr       */
+/*   Updated: 2018/02/16 17:20:39 by elebouch         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,7 @@ char	*get_bin(char *cmd, char *paths)
 		else
 			free(tmp);
 	}
+	freearr(&split);
 	return ((status == -1) ? cmd : tmp);
 }
 
