@@ -6,7 +6,7 @@
 /*   By: elebouch <elebouch@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/14 15:56:46 by elebouch          #+#    #+#             */
-/*   Updated: 2018/02/16 16:35:23 by elebouch         ###   ########.fr       */
+/*   Updated: 2018/03/07 18:36:08 by elebouch         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,7 +53,7 @@ int bltin_unsetenv(char **args, char ***env)
 			*env = rmfromenv(*env, get_index_fromenv(*env, args[argscount]));
 		else
 		{
-				ft_putendl_fd("unsetenv: ", 2);
+				ft_putstr_fd("unsetenv: ", 2);
 				ft_putstr_fd(args[argscount], 2);
 				ft_putendl_fd(" unknown.", 2);
 		}
