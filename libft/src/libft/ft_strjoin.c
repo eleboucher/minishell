@@ -6,7 +6,7 @@
 /*   By: elebouch <elebouch@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/08/31 17:24:58 by elebouch          #+#    #+#             */
-/*   Updated: 2017/12/07 12:10:12 by elebouch         ###   ########.fr       */
+/*   Updated: 2018/03/08 18:51:58 by elebouch         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,4 +41,15 @@ char	*ft_strcleanjoin(char *s1, const char *s2)
 	free(s1);
 	ft_strcat(tmp, s2);
 	return (tmp);
+}
+
+char	*ft_strjoinc_clr(char *a, char b)
+{
+	char	*s;
+
+	if ((s = ft_strmdup(a, 1)) == NULL)
+		return (NULL);
+	s[ft_strlen(a)] = b;
+	free(a);
+	return (s);
 }

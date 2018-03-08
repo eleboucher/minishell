@@ -6,7 +6,7 @@
 #    By: elebouch <elebouch@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/02/07 15:25:29 by elebouch          #+#    #+#              #
-#    Updated: 2018/02/14 17:51:28 by elebouch         ###   ########.fr        #
+#    Updated: 2018/03/08 18:38:46 by elebouch         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -30,7 +30,7 @@ SRC= \
 	free.c \
 	launch.c \
 	main.c \
-	split_whitespaces.c \
+	parser.c \
 	bltin_cd.c \
 	bltin_echo.c \
 	bltin_env.c \

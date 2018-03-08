@@ -6,7 +6,7 @@
 #    By: elebouch <elebouch@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2017/12/06 12:50:22 by elebouch          #+#    #+#              #
-#    Updated: 2018/02/07 17:25:26 by erwanleboucher   ###   ########.fr        #
+#    Updated: 2018/03/08 18:54:54 by elebouch         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -112,7 +112,10 @@ SRCS = \
 		libft/ft_max.c			\
 		libft/ft_min.c			\
 		libft/ft_strset.c \
-	  getnextline/get_next_line.c
+		libft/ft_strbetween.c \
+		libft/ft_strpbrk.c \
+		libft/ft_memjoin.c \
+		getnextline/get_next_line.c
 
 HEADER = \
 		 inc/ft_printf.h \

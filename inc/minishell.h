@@ -6,7 +6,7 @@
 /*   By: elebouch <elebouch@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/07 15:50:26 by elebouch          #+#    #+#             */
-/*   Updated: 2018/02/16 11:38:22 by elebouch         ###   ########.fr       */
+/*   Updated: 2018/03/08 18:48:44 by elebouch         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,12 @@
 # include "ft_printf.h"
 
 
+typedef struct		s_args
+{
+	int				argc;
+	char			**argv;
+}					t_args;
+
 typedef	struct		s_cmd
 {
 		char		*cmd;
@@ -28,7 +34,8 @@ typedef	struct		s_cmd
 		char		*path;
 }					t_cmd;
 
-char	**split_whitespaces(char const *s);
+char	*ft_getargs(char *cmd, t_args *args);
+void	ft_delargs(t_args *args);
 void	freearr(char ***arr);
 int		execute(char **args, char ***env);
 int		cmd_launch(t_cmd *data, char **args, char **env);

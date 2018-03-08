@@ -6,7 +6,7 @@
 /*   By: elebouch <elebouch@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/08/31 19:14:15 by elebouch          #+#    #+#             */
-/*   Updated: 2018/01/10 15:11:26 by elebouch         ###   ########.fr       */
+/*   Updated: 2018/03/08 18:55:49 by elebouch         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -125,4 +125,13 @@ int					ft_wcslen(wchar_t *s);
 int					ft_wclen(wchar_t c);
 int					ft_putwc(wchar_t c);
 char				*ft_wctostr(wchar_t c);
+int					ft_strpbrk_pos(const char *s, const char *charset);
+char				*ft_strjoinc_clr(char *a, char b);
+char				*ft_strbetween(const char *s, char a, char b);
+char				*ft_strndup(const char *s, size_t n);
+char				*ft_strjoincs_clr(char a, char *b);
+char				*ft_strmdup(const char *a, size_t n);
+void				*ft_memjoin_clr(void *a, size_t an, void *b, size_t bn);
+void				*ft_memjoin(const void *a, size_t an, const void *b,
+	size_t bn);
 #endif
