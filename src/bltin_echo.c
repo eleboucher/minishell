@@ -6,13 +6,13 @@
 /*   By: elebouch <elebouch@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/14 15:51:07 by elebouch          #+#    #+#             */
-/*   Updated: 2018/03/09 13:34:02 by elebouch         ###   ########.fr       */
+/*   Updated: 2018/03/09 14:34:09 by elebouch         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
-static void print_for_each(char *str, char ***env)
+static void	print_for_each(char *str, char ***env)
 {
 	size_t	start;
 	size_t	end;
@@ -21,7 +21,7 @@ static void print_for_each(char *str, char ***env)
 
 	start = (str[0] == '\'' || str[0] == '\"') ? 1 : 0;
 	quote = (str[0] == '\'') ? 1 : 0;
-	end = (str[ft_strlen(str) - 1] == '\'' || str[ft_strlen(str) - 1] == '\"')?
+	end = (str[ft_strlen(str) - 1] == '\'' || str[ft_strlen(str) - 1] == '\"') ?
 		ft_strlen(str) - 1 : ft_strlen(str);
 	while (start < end)
 	{
@@ -29,7 +29,7 @@ static void print_for_each(char *str, char ***env)
 		if (str[start] == '$' && !quote)
 		{
 			start++;
-			while(j < end && !ft_isspace(str[j]))
+			while (j < end && !ft_isspace(str[j]))
 				j++;
 			print_fromenv(*env, ft_strsub(str, start, j));
 			start = j;
@@ -40,7 +40,7 @@ static void print_for_each(char *str, char ***env)
 	}
 }
 
-static void print_echo(char **args, char ***env)
+static void	print_echo(char **args, char ***env)
 {
 	size_t i;
 	size_t size;
@@ -53,12 +53,12 @@ static void print_echo(char **args, char ***env)
 	while (i < size)
 	{
 		if (i)
-			write (1, " ", 1);
+			write(1, " ", 1);
 		print_for_each(args[i++], env);
 	}
 }
 
-int	bltin_echo(char **args, char ***env)
+int			bltin_echo(char **args, char ***env)
 {
 	int fg_n;
 
@@ -70,7 +70,7 @@ int	bltin_echo(char **args, char ***env)
 	}
 	if (!ft_strncmp(args[1], "-n", 2))
 		fg_n = 1;
-	print_echo(args + ((fg_n)? 2 : 1), env);
+	print_echo(args + ((fg_n) ? 2 : 1), env);
 	if (!fg_n)
 		ft_putchar('\n');
 	return (1);

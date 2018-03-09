@@ -6,17 +6,17 @@
 /*   By: elebouch <elebouch@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/14 15:56:46 by elebouch          #+#    #+#             */
-/*   Updated: 2018/03/07 18:36:08 by elebouch         ###   ########.fr       */
+/*   Updated: 2018/03/09 14:32:21 by elebouch         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
-char **rmfromenv(char **env, int index)
+char	**rmfromenv(char **env, int index)
 {
-	char **new;
-	int	i;
-	int j;
+	char	**new;
+	int		i;
+	int		j;
 
 	if (!(new = (char **)malloc(sizeof(char*) * (ft_arrsize(env)))))
 		return (NULL);
@@ -34,10 +34,10 @@ char **rmfromenv(char **env, int index)
 		i++;
 	}
 	free(env);
-	return(new);
+	return (new);
 }
 
-int bltin_unsetenv(char **args, char ***env)
+int		bltin_unsetenv(char **args, char ***env)
 {
 	int argscount;
 
@@ -53,9 +53,9 @@ int bltin_unsetenv(char **args, char ***env)
 			*env = rmfromenv(*env, get_index_fromenv(*env, args[argscount]));
 		else
 		{
-				ft_putstr_fd("unsetenv: ", 2);
-				ft_putstr_fd(args[argscount], 2);
-				ft_putendl_fd(" unknown.", 2);
+			ft_putstr_fd("unsetenv: ", 2);
+			ft_putstr_fd(args[argscount], 2);
+			ft_putendl_fd(" unknown.", 2);
 		}
 	}
 	return (1);

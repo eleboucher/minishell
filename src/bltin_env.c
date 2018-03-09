@@ -6,13 +6,13 @@
 /*   By: elebouch <elebouch@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/14 15:56:36 by elebouch          #+#    #+#             */
-/*   Updated: 2018/02/14 17:24:05 by elebouch         ###   ########.fr       */
+/*   Updated: 2018/03/09 14:30:05 by elebouch         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
-int bltin_env(char **args, char ***env)
+int	bltin_env(char **args, char ***env)
 {
 	char **envi;
 

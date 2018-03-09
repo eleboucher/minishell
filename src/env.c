@@ -6,16 +6,16 @@
 /*   By: elebouch <elebouch@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/14 17:33:20 by elebouch          #+#    #+#             */
-/*   Updated: 2018/02/16 13:00:03 by elebouch         ###   ########.fr       */
+/*   Updated: 2018/03/09 14:33:16 by elebouch         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
-char **realloc_env(char **env, int size)
+char	**realloc_env(char **env, int size)
 {
-	char **new;
-	int	i;
+	char	**new;
+	int		i;
 
 	if (!(new = (char **)malloc(sizeof(char*) * (size + 1))))
 		return (NULL);
@@ -27,10 +27,10 @@ char **realloc_env(char **env, int size)
 		free(env[i]);
 	}
 	free(env);
-	return(new);
+	return (new);
 }
 
-int 	get_index_fromenv(char **env, char *var)
+int		get_index_fromenv(char **env, char *var)
 {
 	int		i;
 
@@ -41,7 +41,7 @@ int 	get_index_fromenv(char **env, char *var)
 	return (i);
 }
 
-char *get_fromenv(char **env, char *var)
+char	*get_fromenv(char **env, char *var)
 {
 	int		i;
 
