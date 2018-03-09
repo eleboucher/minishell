@@ -6,7 +6,7 @@
 /*   By: elebouch <elebouch@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/14 15:56:42 by elebouch          #+#    #+#             */
-/*   Updated: 2018/03/09 14:31:26 by elebouch         ###   ########.fr       */
+/*   Updated: 2018/03/09 15:30:12 by elebouch         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,7 @@ void	change_env(char ***env, char *var, char *value)
 	if (envi[index])
 	{
 		free(envi[index]);
+
 		if (value)
 			envi[index] = ft_strjoin(var, tmp);
 		else

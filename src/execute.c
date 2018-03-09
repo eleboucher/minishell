@@ -6,7 +6,7 @@
 /*   By: elebouch <elebouch@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/07 18:04:58 by elebouch          #+#    #+#             */
-/*   Updated: 2018/03/09 14:48:02 by elebouch         ###   ########.fr       */
+/*   Updated: 2018/03/09 15:29:31 by elebouch         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,7 +50,7 @@ t_cmd	*get_path(char **env, char *cmd)
 	while (env[++i])
 		if (!ft_strncmp(env[i], "PATH=", 5))
 			break ;
-	data->path = (env[i]) ? ft_strsub(env[i], 6, ft_strlen(env[i])) :
+	data->path = (env[i]) ? ft_strsub(env[i], 5, ft_strlen(env[i])) :
 		NULL;
 	data->bin = get_bin(cmd, data->path);
 	data->cmd = ft_strdup(cmd);
