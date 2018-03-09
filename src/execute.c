@@ -6,7 +6,7 @@
 /*   By: elebouch <elebouch@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/07 18:04:58 by elebouch          #+#    #+#             */
-/*   Updated: 2018/03/09 11:54:46 by elebouch         ###   ########.fr       */
+/*   Updated: 2018/03/09 13:09:10 by elebouch         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,7 +67,7 @@ int	execute(t_args *args, char ***env)
 	t_cmd		*data;
 
 	i = -1;
-	if (!args->argc)
+	if (!args->argc || !args->argv[0])
 		return (1);
 	while(++i < 6)
 		if (!ft_strcmp(args->argv[0], bltin_str[i]))

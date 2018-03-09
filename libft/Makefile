@@ -6,13 +6,13 @@
 #    By: elebouch <elebouch@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2017/12/06 12:50:22 by elebouch          #+#    #+#              #
-#    Updated: 2018/03/08 18:54:54 by elebouch         ###   ########.fr        #
+#    Updated: 2018/03/09 13:16:48 by elebouch         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = libft.a
 CC = gcc
-CFLAGS =  -Wall -Werror -Wextra -I inc/
+CFLAGS =  -Wall -Werror -Wextra -I inc/ -g
 MAKE = make
 RM = rm -f
 

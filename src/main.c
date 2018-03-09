@@ -6,7 +6,7 @@
 /*   By: elebouch <elebouch@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/07 15:49:26 by elebouch          #+#    #+#             */
-/*   Updated: 2018/03/09 11:55:24 by elebouch         ###   ########.fr       */
+/*   Updated: 2018/03/09 13:27:22 by elebouch         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,10 +41,13 @@ int main(int argc, char **argv, char **environ)
 		ft_printf("$> ");
 		if (get_next_line(0, &line) == -1)
 			exit(EXIT_FAILURE);
-		ft_getargs(line, &args);
-		if (execute(&args, &env) == 0)
-			exit(EXIT_FAILURE);
-		ft_delargs(&args);
+		while ((line = ft_getargs(line, &args)) != NULL)
+		{
+			//printf("args |%s|\n", args.argv[0]);
+			if (execute(&args, &env) == 0)
+				exit(EXIT_FAILURE);
+			ft_delargs(&args);
+		}
 		free(line);
 	}
 	freearr(&env);
