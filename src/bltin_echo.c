@@ -6,7 +6,7 @@
 /*   By: elebouch <elebouch@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/14 15:51:07 by elebouch          #+#    #+#             */
-/*   Updated: 2018/02/15 16:08:38 by elebouch         ###   ########.fr       */
+/*   Updated: 2018/03/09 13:34:02 by elebouch         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ static void print_for_each(char *str, char ***env)
 		if (str[start] == '$' && !quote)
 		{
 			start++;
-			while(j < end &&!ft_isspace(str[j]))
+			while(j < end && !ft_isspace(str[j]))
 				j++;
 			print_fromenv(*env, ft_strsub(str, start, j));
 			start = j;
