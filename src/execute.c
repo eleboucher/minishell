@@ -6,7 +6,7 @@
 /*   By: elebouch <elebouch@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/07 18:04:58 by elebouch          #+#    #+#             */
-/*   Updated: 2018/03/08 13:36:29 by elebouch         ###   ########.fr       */
+/*   Updated: 2018/03/09 11:54:46 by elebouch         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,7 +57,7 @@ t_cmd	*get_path(char **env, char *cmd)
 	return (data);
 }
 
-int	execute(char **args, char ***env)
+int	execute(t_args *args, char ***env)
 {
 	static char	*bltin_str[] = {"echo", "cd", "env", "setenv",
 		"unsetenv", "exit"};
@@ -67,11 +67,11 @@ int	execute(char **args, char ***env)
 	t_cmd		*data;
 
 	i = -1;
-	if (!args[0])
+	if (!args->argc)
 		return (1);
 	while(++i < 6)
-		if (!ft_strcmp(args[0], bltin_str[i]))
-			return (bltin_func[i](args, env));
-	data = get_path(*env, args[0]);
-	return (cmd_launch(data, args, *env));
+		if (!ft_strcmp(args->argv[0], bltin_str[i]))
+			return (bltin_func[i](args->argv, env));
+	data = get_path(*env, args->argv[0]);
+	return (cmd_launch(data, args->argv, *env));
 }

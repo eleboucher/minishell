@@ -6,7 +6,7 @@
 /*   By: elebouch <elebouch@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/14 15:22:33 by elebouch          #+#    #+#             */
-/*   Updated: 2018/02/16 17:40:48 by elebouch         ###   ########.fr       */
+/*   Updated: 2018/03/09 11:58:19 by elebouch         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,14 +21,16 @@ int		cmd_launch(t_cmd *data, char **args, char **env)
 		pid = fork();
 		if (!pid)
 		{
-			if (execve(data->bin, args, env) == -1)
-				ft_printf("minishell: command not found: %s\n", data->cmd);
+			printf("%s", data->bin);
+			execve(data->bin, args, env);
 		}
 		else if (pid < 0)
 			ft_printf("error\n");
 		else
 			wait(0);
 	}
+	else
+		ft_printf("minishell: command not found: %s\n", data->cmd);
 	if (data->cmd)
 		free(data->cmd);
 	if (data->bin)
