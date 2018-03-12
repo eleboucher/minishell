@@ -6,13 +6,27 @@
 /*   By: elebouch <elebouch@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/14 15:22:33 by elebouch          #+#    #+#             */
-/*   Updated: 2018/03/12 16:54:52 by elebouch         ###   ########.fr       */
+/*   Updated: 2018/03/12 17:37:19 by elebouch         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
-int		cmd_launch(t_cmd *data, char **args, char **env)
+static void	free_data(t_cmd **to_free)
+{
+	t_cmd *data;
+
+	data = *to_free;
+	if (data->cmd)
+		free(data->cmd);
+	if (data->bin)
+		free(data->bin);
+	if (data->path)
+		free(data->path);
+	free(data);
+}
+
+int			cmd_launch(t_cmd *data, char **args, char **env)
 {
 	pid_t pid;
 
@@ -21,7 +35,8 @@ int		cmd_launch(t_cmd *data, char **args, char **env)
 		pid = fork();
 		if (!pid)
 		{
-			execve(data->bin, args, env);
+			if (execve(data->bin, args, env) == -1)
+				ft_printf("minishell: command not found: %s\n", data->cmd);
 			exit(0);
 		}
 		else if (pid < 0)
@@ -31,12 +46,6 @@ int		cmd_launch(t_cmd *data, char **args, char **env)
 	}
 	else
 		ft_printf("minishell: command not found: %s\n", data->cmd);
-	if (data->cmd)
-		free(data->cmd);
-	if (data->bin)
-		free(data->bin);
-	if (data->path)
-		free(data->path);
-	free(data);
+	free_data(&data);
 	return (1);
 }
