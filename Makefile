@@ -6,7 +6,7 @@
 #    By: elebouch <elebouch@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/02/07 15:25:29 by elebouch          #+#    #+#              #
-#    Updated: 2018/03/12 16:05:00 by elebouch         ###   ########.fr        #
+#    Updated: 2018/03/12 16:18:23 by elebouch         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -42,14 +42,14 @@ SRC= \
 
 OBJ = $(addprefix $(OBJ_DIR), $(SRC:.c=.o))
 
-all: $(NAME)
+all: lib $(NAME)
 
 $(NAME): $(LIB) $(OBJ)
 	@echo "\n\033[94mCompiling minishell\033[0m"
 	@$(CC) $(CFLAGS) $(CPPFLAGS)  $(OBJ)  -o $(NAME) $(LDFLAGS) $(LDLIBS)
 	@echo  "\033[34mDone\033[0m"
 
-$(LIB):
+lib:
 	@$(MAKE) -C libft/
 
 obj/%.o: src/%.c $(HEADER)
