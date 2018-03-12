@@ -6,7 +6,7 @@
 /*   By: elebouch <elebouch@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/14 15:51:46 by elebouch          #+#    #+#             */
-/*   Updated: 2018/02/16 12:04:44 by elebouch         ###   ########.fr       */
+/*   Updated: 2018/03/12 16:26:59 by elebouch         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,7 +54,10 @@ int		bltin_cd(char **args, char ***env)
 		if (!get_fromenv(*env, "OLDPWD"))
 			ft_putendl_fd("cd: OLDPWD not set.", 2);
 		else
+		{
 			changedir(get_fromenv(*env, "OLDPWD") + 7, env);
+			ft_printf("%s\n", get_fromenv(*env, "OLDPWD") + 7);
+		}
 	}
 	else
 		changedir(args[1], env);
