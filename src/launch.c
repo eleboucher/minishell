@@ -6,7 +6,7 @@
 /*   By: elebouch <elebouch@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/14 15:22:33 by elebouch          #+#    #+#             */
-/*   Updated: 2018/03/12 16:45:17 by elebouch         ###   ########.fr       */
+/*   Updated: 2018/03/12 16:54:52 by elebouch         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,10 +19,12 @@ int		cmd_launch(t_cmd *data, char **args, char **env)
 	if (!access(data->bin, F_OK))
 	{
 		pid = fork();
-		if (!pid){
+		if (!pid)
+		{
 			execve(data->bin, args, env);
 			exit(0);
-		} else if (pid < 0)
+		}
+		else if (pid < 0)
 			ft_printf("error\n");
 		else
 			wait(0);
