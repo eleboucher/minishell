@@ -6,7 +6,7 @@
 #    By: elebouch <elebouch@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/02/07 15:25:29 by elebouch          #+#    #+#              #
-#    Updated: 2018/03/12 16:18:23 by elebouch         ###   ########.fr        #
+#    Updated: 2018/04/04 15:40:03 by elebouch         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -15,7 +15,7 @@ NAME=minishell
 SRC_DIR = ./src/
 OBJ_DIR = ./obj/
 CC = gcc
-CFLAGS = -Wall -Werror -Wextra $(INCLUDE) 
+CFLAGS = -Wall -Werror -Wextra $(INCLUDE)
 CPPFLAGS = -I./inc -I./libft/inc
 LDFLAGS = -Llibft/
 LDLIBS = -lft
@@ -42,14 +42,16 @@ SRC= \
 
 OBJ = $(addprefix $(OBJ_DIR), $(SRC:.c=.o))
 
-all: lib $(NAME)
+all: libs $(NAME)
 
 $(NAME): $(LIB) $(OBJ)
 	@echo "\n\033[94mCompiling minishell\033[0m"
 	@$(CC) $(CFLAGS) $(CPPFLAGS)  $(OBJ)  -o $(NAME) $(LDFLAGS) $(LDLIBS)
 	@echo  "\033[34mDone\033[0m"
 
-lib:
+$(LIB):;
+
+libs:
 	@$(MAKE) -C libft/
 
 obj/%.o: src/%.c $(HEADER)
@@ -69,4 +71,4 @@ re:
 	@$(MAKE) fclean
 	@$(MAKE) all
 
-.PHONY: clean fclean re all lib
+.PHONY: clean fclean re all libs
