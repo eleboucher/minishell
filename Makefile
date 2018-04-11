@@ -6,7 +6,7 @@
 #    By: elebouch <elebouch@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/02/07 15:25:29 by elebouch          #+#    #+#              #
-#    Updated: 2018/04/04 15:40:03 by elebouch         ###   ########.fr        #
+#    Updated: 2018/04/11 16:37:43 by elebouch         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -17,7 +17,7 @@ OBJ_DIR = ./obj/
 CC = gcc
 CFLAGS = -Wall -Werror -Wextra $(INCLUDE)
 CPPFLAGS = -I./inc -I./libft/inc
-LDFLAGS = -Llibft/
+LDFLAGS = -L libft/
 LDLIBS = -lft
 LIB = libft/libft.a
 MAKE = make
@@ -42,7 +42,9 @@ SRC= \
 
 OBJ = $(addprefix $(OBJ_DIR), $(SRC:.c=.o))
 
-all: libs $(NAME)
+all: 
+	@$(MAKE) libs 
+	@$(MAKE) $(NAME)
 
 $(NAME): $(LIB) $(OBJ)
 	@echo "\n\033[94mCompiling minishell\033[0m"
