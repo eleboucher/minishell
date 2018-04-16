@@ -6,7 +6,7 @@
 /*   By: elebouch <elebouch@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/14 15:51:46 by elebouch          #+#    #+#             */
-/*   Updated: 2018/03/12 16:26:59 by elebouch         ###   ########.fr       */
+/*   Updated: 2018/04/16 16:10:29 by elebouch         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,6 @@ void	changedir(char *path, char ***env)
 		free(pwd);
 		pwd = getcwd(NULL, 0);
 		change_env(env, "PWD", pwd);
-		free(pwd);
 	}
 	else
 	{
@@ -36,6 +35,7 @@ void	changedir(char *path, char ***env)
 			ft_putstr_fd("not a directory: ", 2);
 		ft_putendl_fd(path, 2);
 	}
+	free(pwd);
 }
 
 int		bltin_cd(char **args, char ***env)
