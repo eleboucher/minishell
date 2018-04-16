@@ -56,7 +56,7 @@ int		bltin_cd(char **args, char ***env)
 		else
 		{
 			changedir(get_fromenv(*env, "OLDPWD") + 7, env);
-			ft_printf("%s\n", get_fromenv(*env, "OLDPWD") + 7);
+			ft_printf("%s\n", get_fromenv(*env, "PWD") + 4);
 		}
 	}
 	else
