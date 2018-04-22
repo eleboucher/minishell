@@ -27,7 +27,8 @@ char	**rmfromenv(char **env, int index)
 	{
 		if (i != index)
 		{
-			new[j] = ft_strdup(env[i]);
+			if(!(new[j] = ft_strdup(env[i])))
+				return (NULL);
 			j++;
 		}
 		free(env[i]);
@@ -42,6 +43,8 @@ int		bltin_unsetenv(char **args, char ***env)
 	int argscount;
 
 	argscount = 0;
+	if (!env || !*env)
+		return (1);
 	if (ft_arrsize(args) < 2)
 	{
 		ft_putendl_fd("unsetenv: Too few arguments.", 2);

@@ -63,6 +63,8 @@ int			bltin_echo(char **args, char ***env)
 	int fg_n;
 
 	fg_n = 0;
+	if (!env || !*env)
+		return(0);
 	if (!args[1])
 	{
 		ft_putchar('\n');

@@ -22,7 +22,7 @@ void	changedir(char *path, char ***env)
 		change_env(env, "OLDPWD", pwd);
 		free(pwd);
 		pwd = getcwd(NULL, 0);
-		change_env(env, "PWD", pwd);
+		change_env(env, "PWD", path);
 	}
 	else
 	{
@@ -40,6 +40,8 @@ void	changedir(char *path, char ***env)
 
 int		bltin_cd(char **args, char ***env)
 {
+	if (!env)
+		return (0);
 	if (ft_arrsize(args) > 2)
 		ft_putendl("cd: too many arguments.");
 	if (!args[1])

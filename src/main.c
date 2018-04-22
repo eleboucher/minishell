@@ -22,7 +22,8 @@ char	**ft_arrdup(char **arr)
 		return (NULL);
 	ret[ft_arrsize(arr)] = 0;
 	while (arr[++i])
-		ret[i] = ft_strdup(arr[i]);
+		if (!(ret[i] = ft_strdup(arr[i])))
+			return (NULL);
 	return (ret);
 }
 
@@ -34,12 +35,13 @@ int		main(int argc, char **argv, char **environ)
 
 	(void)argc;
 	(void)argv;
-	env = ft_arrdup(environ);
+	if (!(env = ft_arrdup(environ)))
+		exit(EXIT_FAILURE);
 	ft_bzero(&args, sizeof(t_args));
 	while (42)
 	{
 		ft_printf("$> ");
-		if (get_next_line(0, &line) == -1)
+		if (get_next_line(0, &line) != 1)
 			exit(EXIT_FAILURE);
 		ft_getargs(line, &args);
 		if (execute(&args, &env) == 0)

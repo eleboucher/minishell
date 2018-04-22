@@ -47,13 +47,15 @@ t_cmd	*get_path(char **env, char *cmd)
 	i = -1;
 	if (!(data = (t_cmd*)malloc(sizeof(t_cmd))))
 		return (0);
-	while (env[++i])
-		if (!ft_strncmp(env[i], "PATH=", 5))
-			break ;
-	data->path = (env[i]) ? ft_strsub(env[i], 5, ft_strlen(env[i])) :
+	if (env)
+		while (env[++i])
+			if (!ft_strncmp(env[i], "PATH=", 5))
+				break ;
+	data->path = (env && env[i]) ? ft_strsub(env[i], 5, ft_strlen(env[i])) :
 		NULL;
 	data->bin = get_bin(cmd, data->path);
-	data->cmd = ft_strdup(cmd);
+	if (!(data->cmd = ft_strdup(cmd)))
+		return (NULL);
 	return (data);
 }
 
@@ -67,11 +69,12 @@ int		execute(t_args *args, char ***env)
 	t_cmd		*data;
 
 	i = -1;
-	if (!args->argc || !args->argv[0])
+	if (!args || !args->argc || !args->argv[0])
 		return (1);
 	while (++i < 6)
 		if (!ft_strcmp(args->argv[0], bltin_str[i]))
 			return (bltin_func[i](args->argv, env));
-	data = get_path(*env, args->argv[0]);
+	if (!(data = get_path(*env, args->argv[0])))
+		return (1);
 	return (cmd_launch(data, args->argv, *env));
 }

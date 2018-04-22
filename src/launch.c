@@ -30,7 +30,7 @@ int			cmd_launch(t_cmd *data, char **args, char **env)
 {
 	pid_t pid;
 
-	if (!access(data->bin, F_OK))
+	if (data->bin && !access(data->bin, F_OK))
 	{
 		pid = fork();
 		if (!pid)

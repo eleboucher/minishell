@@ -43,6 +43,8 @@ void	change_env(char ***env, char *var, char *value)
 
 int		bltin_setenv(char **args, char ***env)
 {
+	if (!env)
+		return (0);
 	if (!args[1])
 	{
 		bltin_env(args, env);

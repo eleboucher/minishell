@@ -23,7 +23,8 @@ char	**realloc_env(char **env, int size)
 	new[size] = 0;
 	while (env[++i] && i < size)
 	{
-		new[i] = ft_strdup(env[i]);
+		if (!(new[i] = ft_strdup(env[i])))
+			return (NULL);
 		free(env[i]);
 	}
 	free(env);
@@ -35,9 +36,10 @@ int		get_index_fromenv(char **env, char *var)
 	int		i;
 
 	i = -1;
-	while (env[++i])
-		if (!ft_strncmp(env[i], var, ft_strlen(var)))
-			break ;
+	if (env)
+		while (env[++i])
+			if (!ft_strncmp(env[i], var, ft_strlen(var)))
+				break ;
 	return (i);
 }
 
@@ -46,10 +48,11 @@ char	*get_fromenv(char **env, char *var)
 	int		i;
 
 	i = -1;
-	while (env[++i])
-		if (!ft_strncmp(env[i], var, ft_strlen(var)))
-			break ;
-	return (env[i]);
+	if (env)
+		while (env[++i])
+			if (!ft_strncmp(env[i], var, ft_strlen(var)))
+				break ;
+	return ((env) ? env[i] : NULL);
 }
 
 void	print_fromenv(char **env, char *var)
@@ -57,6 +60,8 @@ void	print_fromenv(char **env, char *var)
 	int		i;
 
 	i = -1;
+	if (!env)
+		return ;
 	while (env[++i])
 		if (!ft_strncmp(env[i], var, ft_strlen(var)))
 			break ;

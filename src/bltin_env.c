@@ -17,6 +17,8 @@ int	bltin_env(char **args, char ***env)
 	char **envi;
 
 	(void)args;
+	if (!env || !*env)
+		return (0);
 	envi = *env;
 	while (*envi)
 	{
