@@ -12,7 +12,7 @@
 
 NAME = libft.a
 CC = gcc
-CFLAGS =  -Wall -Werror -Wextra -I inc/ -g
+CFLAGS =  -Wall -Werror -Wextra -I inc/
 MAKE = make
 RM = rm -f
 

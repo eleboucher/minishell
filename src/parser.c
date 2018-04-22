@@ -25,9 +25,8 @@ char	*ft_getargs(char *cmd, t_args *args)
 	{
 		if (*cmd == '"' || *cmd == '\'')
 			str = ft_strbetween(cmd, *cmd, *cmd);
-		else if ((pos = ft_strpbrk_pos(cmd, " \t;\"'")) != -1 || 1){
+		else if ((pos = ft_strpbrk_pos(cmd, " \t;\"'")) != -1 || 1)
 			str = (pos != -1 ? ft_strndup(cmd, pos) : ft_strdup(cmd));
-		}
 		if (!(args->argv = ft_memjoin_clr(args->argv, sizeof(char *)
 			* args->argc++, &str, sizeof(char *))))
 			return (NULL);
