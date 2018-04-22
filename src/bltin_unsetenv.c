@@ -27,7 +27,7 @@ char	**rmfromenv(char **env, int index)
 	{
 		if (i != index)
 		{
-			if(!(new[j] = ft_strdup(env[i])))
+			if (!(new[j] = ft_strdup(env[i])))
 				return (NULL);
 			j++;
 		}

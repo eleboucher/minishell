@@ -31,7 +31,8 @@ static void	print_for_each(char *str, char ***env)
 			start++;
 			while (j < end && !ft_isspace(str[j]))
 				j++;
-			print_fromenv(*env, ft_strsub(str, start, j));
+			if (env || *env)
+				print_fromenv(*env, ft_strsub(str, start, j));
 			start = j;
 		}
 		else
@@ -63,8 +64,6 @@ int			bltin_echo(char **args, char ***env)
 	int fg_n;
 
 	fg_n = 0;
-	if (!env || !*env)
-		return(0);
 	if (!args[1])
 	{
 		ft_putchar('\n');
