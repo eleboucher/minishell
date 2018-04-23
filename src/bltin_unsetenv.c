@@ -19,7 +19,7 @@ char	**rmfromenv(char **env, int index)
 	int		j;
 
 	if (!(new = (char **)malloc(sizeof(char*) * (ft_arrsize(env)))))
-		return (NULL);
+		exit(EXIT_FAILURE);
 	i = 0;
 	j = 0;
 	new[ft_arrsize(env) - 1] = 0;
@@ -28,7 +28,7 @@ char	**rmfromenv(char **env, int index)
 		if (i != index)
 		{
 			if (!(new[j] = ft_strdup(env[i])))
-				return (NULL);
+				exit(EXIT_FAILURE);
 			j++;
 		}
 		free(env[i]);

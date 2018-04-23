@@ -18,13 +18,13 @@ char	**realloc_env(char **env, int size)
 	int		i;
 
 	if (!(new = (char **)malloc(sizeof(char*) * (size + 1))))
-		return (NULL);
+		exit(EXIT_FAILURE);
 	i = -1;
 	new[size] = 0;
 	while (env[++i] && i < size)
 	{
 		if (!(new[i] = ft_strdup(env[i])))
-			return (NULL);
+			exit(EXIT_FAILURE);
 		free(env[i]);
 	}
 	free(env);

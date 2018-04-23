@@ -19,11 +19,11 @@ char	**ft_arrdup(char **arr)
 
 	i = -1;
 	if (!(ret = (char**)malloc(sizeof(char*) * (ft_arrsize(arr) + 1))))
-		return (NULL);
+		exit(EXIT_FAILURE);
 	ret[ft_arrsize(arr)] = 0;
 	while (arr[++i])
 		if (!(ret[i] = ft_strdup(arr[i])))
-			return (NULL);
+			exit(EXIT_FAILURE);
 	return (ret);
 }
 

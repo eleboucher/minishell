@@ -46,7 +46,7 @@ t_cmd	*get_path(char **env, char *cmd)
 
 	i = -1;
 	if (!(data = (t_cmd*)malloc(sizeof(t_cmd))))
-		return (0);
+		exit(EXIT_FAILURE);
 	if (env)
 		while (env[++i])
 			if (!ft_strncmp(env[i], "PATH=", 5))
