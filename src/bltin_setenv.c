@@ -6,43 +6,37 @@
 /*   By: elebouch <elebouch@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/14 15:56:42 by elebouch          #+#    #+#             */
-/*   Updated: 2018/04/26 16:08:50 by elebouch         ###   ########.fr       */
+/*   Updated: 2018/04/26 16:22:27 by elebouch         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
-void change_env(char ***env, char *var, char *value)
+void	change_env(char ***env, char *var, char *value)
 {
-	int index;
-	char *tmp;
-	char **envi;
+	int		index;
+	char	*tmp;
+	char	**envi;
 
 	index = get_index_fromenv(*env, var);
 	if (!(tmp = ft_strjoin("=", value)))
-		return;
+		exit(1);
 	envi = *env;
 	if (envi[index])
 	{
 		free(envi[index]);
-		if (value)
-			envi[index] = ft_strjoin(var, tmp);
-		else
-			envi[index] = ft_strjoin(var, "=");
+		envi[index] = (value) ? ft_strjoin(var, tmp) : ft_strjoin(var, "=");
 	}
 	else
 	{
 		envi = realloc_env(envi, index + 1);
-		if (value)
-			envi[index] = ft_strjoin(var, tmp);
-		else
-			envi[index] = ft_strjoin(var, "=");
+		envi[index] = (value) ? ft_strjoin(var, tmp) : ft_strjoin(var, "=");
 	}
 	*env = envi;
 	free(tmp);
 }
 
-int bltin_setenv(char **args, char ***env)
+int		bltin_setenv(char **args, char ***env)
 {
 	if (!env)
 		return (0);
