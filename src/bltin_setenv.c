@@ -6,20 +6,21 @@
 /*   By: elebouch <elebouch@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/14 15:56:42 by elebouch          #+#    #+#             */
-/*   Updated: 2018/03/10 10:29:16 by elebouch         ###   ########.fr       */
+/*   Updated: 2018/04/26 16:08:50 by elebouch         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
-void	change_env(char ***env, char *var, char *value)
+void change_env(char ***env, char *var, char *value)
 {
-	int		index;
-	char	*tmp;
-	char	**envi;
+	int index;
+	char *tmp;
+	char **envi;
 
 	index = get_index_fromenv(*env, var);
-	tmp = ft_strjoin("=", value);
+	if (!(tmp = ft_strjoin("=", value)))
+		return;
 	envi = *env;
 	if (envi[index])
 	{
@@ -41,7 +42,7 @@ void	change_env(char ***env, char *var, char *value)
 	free(tmp);
 }
 
-int		bltin_setenv(char **args, char ***env)
+int bltin_setenv(char **args, char ***env)
 {
 	if (!env)
 		return (0);
