@@ -33,7 +33,7 @@ typedef	struct		s_cmd
 	char			*path;
 }					t_cmd;
 
-char				*ft_getargs(char *cmd, t_args *args);
+char				*ft_getargs(char *cmd, t_args *args, char **env);
 void				ft_delargs(t_args *args);
 void				freearr(char ***arr);
 int					execute(t_args *args, char ***env);

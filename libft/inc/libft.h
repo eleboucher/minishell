@@ -134,4 +134,5 @@ char				*ft_strmdup(const char *a, size_t n);
 void				*ft_memjoin_clr(void *a, size_t an, void *b, size_t bn);
 void				*ft_memjoin(const void *a, size_t an, const void *b,
 	size_t bn);
+char				*ft_strjoin_clr(char *a, char *b, int d);
 #endif

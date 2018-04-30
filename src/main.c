@@ -43,7 +43,7 @@ int		main(int argc, char **argv, char **environ)
 		ft_printf("$> ");
 		if (get_next_line(0, &line) != 1)
 			exit(EXIT_FAILURE);
-		ft_getargs(line, &args);
+		ft_getargs(line, &args, env);
 		if (execute(&args, &env) == 0)
 			exit(EXIT_FAILURE);
 		ft_delargs(&args);

@@ -22,7 +22,7 @@ void	changedir(char *path, char ***env)
 		change_env(env, "OLDPWD", pwd);
 		free(pwd);
 		pwd = getcwd(NULL, 0);
-		change_env(env, "PWD", path);
+		change_env(env, "PWD", pwd);
 	}
 	else
 	{
