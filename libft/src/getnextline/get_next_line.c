@@ -19,7 +19,7 @@ static char		*gnl_join(char **line, char const *buff)
 
 	if ((n = ft_strindexchr(buff, '\n')) < -1)
 		return (NULL);
-	n = (n == -1) ? ft_strlen(buff) : n;
+	n = (n == -1) ? (int)ft_strlen(buff) : n;
 	if (!(tmp = ft_strnew(ft_strlen(*line) + (n))))
 		return (NULL);
 	ft_strcpy(tmp, *line);

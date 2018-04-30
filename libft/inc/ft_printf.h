@@ -16,6 +16,10 @@
 # include <stdarg.h>
 # include "libft.h"
 
+# ifdef __linux
+# include <inttypes.h>
+# endif
+
 typedef struct	s_prtf
 {
 	int			precision;
