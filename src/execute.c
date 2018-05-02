@@ -29,7 +29,8 @@ char	*get_bin(char *cmd, char *paths)
 	{
 		tmp = (split[i][ft_strlen(split[i]) - 1] == '/') ? ft_strdup(split[i]) :
 			ft_strjoin(split[i], "/");
-		tmp = ft_strcleanjoin(tmp, cmd);
+		if (!tmp || !(tmp = ft_strcleanjoin(tmp, cmd)))
+			exit(EXIT_FAILURE);
 		if (!(status = stat(tmp, &stats)))
 			break ;
 		else
