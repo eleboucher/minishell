@@ -6,7 +6,7 @@
 /*   By: elebouch <elebouch@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/14 15:51:07 by elebouch          #+#    #+#             */
-/*   Updated: 2018/03/09 14:34:09 by elebouch         ###   ########.fr       */
+/*   Updated: 2018/05/03 09:50:45 by elebouch         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ int			bltin_echo(char **args, char ***env)
 {
 	int fg_n;
 
-	(void) env;
+	(void)env;
 	fg_n = 0;
 	if (!args[1])
 	{

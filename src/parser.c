@@ -6,7 +6,7 @@
 /*   By: elebouch <elebouch@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/07 17:46:48 by elebouch          #+#    #+#             */
-/*   Updated: 2018/03/12 16:38:59 by elebouch         ###   ########.fr       */
+/*   Updated: 2018/05/03 09:52:18 by elebouch         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ static char	*handle_exp(char **cmd, char **env)
 	char	*tldstr;
 	char	*home;
 
-	pos = ft_strpbrk_pos(*cmd, " \t\"'"); 
+	pos = ft_strpbrk_pos(*cmd, " \t\"'");
 	if (!(str = (pos == -1 ? ft_strdup(*cmd) : ft_strndup(*cmd, pos))))
 		return (NULL);
 	if (str[0] == '~' && str[1] != '~' && env)
@@ -30,10 +30,9 @@ static char	*handle_exp(char **cmd, char **env)
 		{
 			*cmd += (pos == -1 ? ft_strlen(*cmd) : (size_t)pos);
 			free(str);
-			return(tldstr);
+			return (tldstr);
 		}
 	}
-
 	*cmd += (pos == -1 ? ft_strlen(*cmd) : (size_t)pos);
 	return (str);
 }
@@ -64,15 +63,15 @@ static char	*ft_checkargs(char **cmd, char **env)
 		ret = ft_strbetween(*cmd, **cmd, **cmd);
 		if (*(*cmd += ft_strlen(ret) + 1))
 			(*cmd)++;
-		if	(!(str = ft_strjoin_clr(str, ret, 2)))
+		if (!(str = ft_strjoin_clr(str, ret, 2)))
 			return (NULL);
 	}
 	else
 	{
 		if (!(ret = handle_exp(cmd, env)))
 			return (NULL);
-		if	(!(str = ft_strjoin_clr(str, checkenvar(ret, env), 2)))
-    		return (NULL);
+		if (!(str = ft_strjoin_clr(str, checkenvar(ret, env), 2)))
+			return (NULL);
 	}
 	ret = str;
 	str = NULL;

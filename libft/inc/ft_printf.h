@@ -6,7 +6,7 @@
 /*   By: elebouch <elebouch@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/06 11:04:13 by elebouch          #+#    #+#             */
-/*   Updated: 2018/01/10 14:44:08 by elebouch         ###   ########.fr       */
+/*   Updated: 2018/05/03 09:49:43 by elebouch         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@
 # include "libft.h"
 
 # ifdef __linux
-# include <inttypes.h>
+#  include <inttypes.h>
 # endif
 
 typedef struct	s_prtf
