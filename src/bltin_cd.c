@@ -6,23 +6,22 @@
 /*   By: elebouch <elebouch@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/14 15:51:46 by elebouch          #+#    #+#             */
-/*   Updated: 2018/04/16 16:10:29 by elebouch         ###   ########.fr       */
+/*   Updated: 2018/05/03 18:44:24 by elebouch         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
-void	changedir(char *path, char ***env)
+void changedir(char *path, char ***env)
 {
 	char *pwd;
 
-	pwd = getcwd(NULL, 0);
 	if (!chdir(path))
 	{
-		change_env(env, "OLDPWD", pwd);
-		free(pwd);
+		change_env(env, "OLDPWD", get_fromenv(*env, "PWD") + 4);
 		pwd = getcwd(NULL, 0);
 		change_env(env, "PWD", pwd);
+		free(pwd);
 	}
 	else
 	{
@@ -35,10 +34,9 @@ void	changedir(char *path, char ***env)
 			ft_putstr_fd("not a directory: ", 2);
 		ft_putendl_fd(path, 2);
 	}
-	free(pwd);
 }
 
-int		bltin_cd(char **args, char ***env)
+int bltin_cd(char **args, char ***env)
 {
 	if (!env)
 		return (0);
