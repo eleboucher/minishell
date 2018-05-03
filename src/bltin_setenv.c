@@ -6,7 +6,7 @@
 /*   By: elebouch <elebouch@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/14 15:56:42 by elebouch          #+#    #+#             */
-/*   Updated: 2018/05/03 10:19:28 by elebouch         ###   ########.fr       */
+/*   Updated: 2018/05/03 18:50:01 by elebouch         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,7 +54,7 @@ int		bltin_setenv(char **args, char ***env)
 		}
 		change_env(env, args[1], args[2]);
 	}
-	else 
+	else
 		ft_putendl_fd("setenv: Too few arguments.", 2);
 	return (1);
 }
