@@ -6,7 +6,7 @@
 #    By: elebouch <elebouch@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/02/07 15:25:29 by elebouch          #+#    #+#              #
-#    Updated: 2018/04/11 16:37:43 by elebouch         ###   ########.fr        #
+#    Updated: 2018/05/03 09:54:03 by elebouch         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -15,7 +15,7 @@ NAME=minishell
 SRC_DIR = ./src/
 OBJ_DIR = ./obj/
 CC = gcc
-CFLAGS = -Wall -Werror -Wextra $(INCLUDE) -g
+CFLAGS = -Wall -Werror -Wextra $(INCLUDE)
 CPPFLAGS = -I./inc -I./libft/inc
 LDFLAGS = -L libft/
 LDLIBS = -lft
