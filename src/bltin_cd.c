@@ -18,7 +18,8 @@ void	changedir(char *path, char ***env)
 
 	if (!chdir(path))
 	{
-		change_env(env, "OLDPWD", get_fromenv(*env, "PWD") + 4);
+		change_env(env, "OLDPWD", get_fromenv(*env, "PWD") ?
+			get_fromenv(*env, "PWD") + 4 : NULL);
 		pwd = getcwd(NULL, 0);
 		change_env(env, "PWD", pwd);
 		free(pwd);
