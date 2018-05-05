@@ -24,9 +24,9 @@ static void	print_echo(char **args)
 	i = 0;
 	while (i < size)
 	{
-		if (i)
-			write(1, " ", 1);
 		ft_printf("%s", args[i++]);
+		if (i < size)
+			write(1, " ", 1);
 	}
 }
 

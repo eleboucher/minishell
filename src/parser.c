@@ -42,9 +42,10 @@ static char	*checkenvar(char *str, char **env)
 	int		pos;
 	char	*var;
 
-	if ((pos = ft_strindexchr(str, '$')) != -1)
+	if ((pos = ft_strindexchr(str, '$')) != -1 && str[pos + 1])
 	{
 		str[pos] = 0;
+		ft_printf("|%s|\n", str);
 		if ((var = get_fromenv(env, &str[pos + 1])))
 			str = ft_strjoin_clr(str, var + ft_strindexchr(var, '=') + 1, 0);
 	}
