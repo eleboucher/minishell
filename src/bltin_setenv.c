@@ -19,8 +19,9 @@ void	change_env(char ***env, char *var, char *value)
 	char	**envi;
 
 	index = get_index_fromenv(*env, var);
-	if (!(tmp = ft_strjoin("=", value)))
-		exit(1);
+	tmp = NULL;
+	if (!value && !*env && !(tmp = ft_strjoin("=", value)))
+		return ;
 	envi = *env;
 	if (envi[index])
 	{
