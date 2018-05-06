@@ -6,7 +6,7 @@
 /*   By: elebouch <elebouch@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/07 17:46:48 by elebouch          #+#    #+#             */
-/*   Updated: 2018/05/03 09:52:18 by elebouch         ###   ########.fr       */
+/*   Updated: 2018/05/06 10:08:09 by elebouch         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ static char	*handle_exp(char **cmd, char **env)
 	{
 		if (!(home = get_fromenv(env, "HOME")))
 			return (NULL);
-		if ((tldstr = ft_strjoin(home + 5, str + 1)))
+		if ((tldstr = ft_strjoin(home, str + 1)))
 		{
 			*cmd += (pos == -1 ? ft_strlen(*cmd) : (size_t)pos);
 			free(str);
@@ -44,10 +44,11 @@ static char	*checkenvar(char *str, char **env)
 
 	if ((pos = ft_strindexchr(str, '$')) != -1 && str[pos + 1])
 	{
-		str[pos] = 0;
-		ft_printf("|%s|\n", str);
 		if ((var = get_fromenv(env, &str[pos + 1])))
-			str = ft_strjoin_clr(str, var + ft_strindexchr(var, '=') + 1, 0);
+		{
+			str[pos] = 0;
+			str = ft_strjoin_clr(str, var, 0);
+		}
 	}
 	return (str);
 }

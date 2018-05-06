@@ -6,7 +6,7 @@
 /*   By: elebouch <elebouch@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/07 15:50:26 by elebouch          #+#    #+#             */
-/*   Updated: 2018/03/09 14:50:15 by elebouch         ###   ########.fr       */
+/*   Updated: 2018/05/06 09:22:32 by elebouch         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 # include <stdlib.h>
 # include <sys/wait.h>
 # include <sys/types.h>
+# include <sys/param.h>
 # include <sys/stat.h>
 # include <unistd.h>
 # include "get_next_line.h"
@@ -50,4 +51,5 @@ char				**realloc_env(char **env, int size);
 char				*get_fromenv(char **env, char *var);
 void				change_env(char ***env, char *var, char *value);
 void				changedir(char *path, char ***env);
+char    			*get_cd_path(char *path, char *pwd);
 #endif

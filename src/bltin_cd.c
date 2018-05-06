@@ -6,7 +6,7 @@
 /*   By: elebouch <elebouch@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/14 15:51:46 by elebouch          #+#    #+#             */
-/*   Updated: 2018/05/03 18:49:28 by elebouch         ###   ########.fr       */
+/*   Updated: 2018/05/06 10:02:14 by elebouch         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,15 +14,14 @@
 
 void	changedir(char *path, char ***env)
 {
-	char *pwd;
+	char *pth;
 
-	if (!chdir(path))
+	if (!(pth = get_cd_path(path, get_fromenv(*env, "PWD"))))
+		exit(EXIT_FAILURE);
+	if (!chdir(pth))
 	{
-		change_env(env, "OLDPWD", get_fromenv(*env, "PWD") ?
-			get_fromenv(*env, "PWD") + 4 : NULL);
-		pwd = getcwd(NULL, 0);
-		change_env(env, "PWD", pwd);
-		free(pwd);
+		change_env(env, "OLDPWD", get_fromenv(*env, "PWD"));
+		change_env(env, "PWD", pth);
 	}
 	else
 	{
@@ -33,8 +32,9 @@ void	changedir(char *path, char ***env)
 			ft_putstr_fd("permission denied: ", 2);
 		else
 			ft_putstr_fd("not a directory: ", 2);
-		ft_putendl_fd(path, 2);
+		ft_putendl_fd(pth, 2);
 	}
+	free(pth);
 }
 
 int		bltin_cd(char **args, char ***env)
@@ -48,7 +48,7 @@ int		bltin_cd(char **args, char ***env)
 		if (!get_fromenv(*env, "HOME"))
 			ft_putendl_fd("cd: HOME not set.", 2);
 		else
-			changedir(get_fromenv(*env, "HOME") + 5, env);
+			changedir(get_fromenv(*env, "HOME"), env);
 	}
 	else if (!ft_strcmp(args[1], "-"))
 	{
@@ -56,8 +56,8 @@ int		bltin_cd(char **args, char ***env)
 			ft_putendl_fd("cd: OLDPWD not set.", 2);
 		else
 		{
-			changedir(get_fromenv(*env, "OLDPWD") + 7, env);
-			ft_printf("%s\n", get_fromenv(*env, "PWD") + 4);
+			changedir(get_fromenv(*env, "OLDPWD"), env);
+			ft_printf("%s\n", get_fromenv(*env, "PWD"));
 		}
 	}
 	else

@@ -6,7 +6,7 @@
 #    By: elebouch <elebouch@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/02/07 15:25:29 by elebouch          #+#    #+#              #
-#    Updated: 2018/05/03 09:54:03 by elebouch         ###   ########.fr        #
+#    Updated: 2018/05/06 09:22:51 by elebouch         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -38,7 +38,8 @@ SRC= \
 	bltin_setenv.c \
 	bltin_unsetenv.c \
 	bltin_exit.c \
-	env.c
+	env.c \
+	getpath.c
 
 OBJ = $(addprefix $(OBJ_DIR), $(SRC:.c=.o))
 
