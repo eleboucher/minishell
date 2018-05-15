@@ -6,20 +6,20 @@
 /*   By: elebouch <elebouch@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/05/06 09:07:41 by elebouch          #+#    #+#             */
-/*   Updated: 2018/05/06 10:02:27 by elebouch         ###   ########.fr       */
+/*   Updated: 2018/05/15 15:00:01 by elebouch         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
-static char	*skip_slash(char *str)
+static char		*skip_slash(char *str)
 {
 	while (*str == '/')
 		str++;
 	return (str);
 }
 
-static void	prev_path(char *str, int *len)
+static void		prev_path(char *str, int *len)
 {
 	if (!*len)
 		return ;
@@ -34,14 +34,14 @@ static void	prev_path(char *str, int *len)
 	}
 }
 
-static char	*cleanpath(char *path)
+static char		*cleanpath(char *path)
 {
-    char    *str;
-    int     len;
+	char	*str;
+	int		len;
 
-    if (!(str = ft_strnew(MAXPATHLEN)))
-        return (NULL);
-    len = 0;
+	if (!(str = ft_strnew(MAXPATHLEN)))
+		return (NULL);
+	len = 0;
 	while (*path && len < MAXPATHLEN)
 	{
 		if (*path == '/')
@@ -59,25 +59,24 @@ static char	*cleanpath(char *path)
 		else
 			str[len++] = *(path++);
 	}
-    return (str);
+	return (str);
 }
 
-
-char    *get_cd_path(char *path, char *pwd)
+char			*get_cd_path(char *path, char *pwd)
 {
-    char    *tmp;
-    char    *ret;
+	char	*tmp;
+	char	*ret;
 
-    if (path && path[0] == '/')
-        return (cleanpath(path));
-    if (!pwd)
-        tmp = ft_strdup(path);
-    else
-    {
-        tmp = ft_strjoin(pwd, "/");
-        tmp = ft_strjoin_clr(tmp, path, 0);
-    }
-    ret = cleanpath(tmp);
-    free(tmp);
-    return (ret);
+	if (path && path[0] == '/')
+		return (cleanpath(path));
+	if (!pwd)
+		tmp = ft_strdup(path);
+	else
+	{
+		tmp = ft_strjoin(pwd, "/");
+		tmp = ft_strjoin_clr(tmp, path, 0);
+	}
+	ret = cleanpath(tmp);
+	free(tmp);
+	return (ret);
 }

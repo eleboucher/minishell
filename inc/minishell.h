@@ -6,7 +6,7 @@
 /*   By: elebouch <elebouch@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/07 15:50:26 by elebouch          #+#    #+#             */
-/*   Updated: 2018/05/06 09:22:32 by elebouch         ###   ########.fr       */
+/*   Updated: 2018/05/15 15:00:47 by elebouch         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,5 +51,5 @@ char				**realloc_env(char **env, int size);
 char				*get_fromenv(char **env, char *var);
 void				change_env(char ***env, char *var, char *value);
 void				changedir(char *path, char ***env);
-char    			*get_cd_path(char *path, char *pwd);
+char				*get_cd_path(char *path, char *pwd);
 #endif
