@@ -6,7 +6,7 @@
 /*   By: elebouch <elebouch@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/14 17:33:20 by elebouch          #+#    #+#             */
-/*   Updated: 2018/05/06 10:03:50 by elebouch         ###   ########.fr       */
+/*   Updated: 2018/05/15 21:59:55 by elebouch         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,7 +52,9 @@ char	*get_fromenv(char **env, char *var)
 		while (env[++i])
 			if (!ft_strncmp(env[i], var, ft_strlen(var)))
 				break ;
-	return ((env && env[i]) ? env[i] + ft_strlen(var) + 1 : NULL);
+	if (!env || !env[i] || env[i][ft_strlen(var) + 1] != '=')
+		return (NULL);
+	return (env[i] + ft_strlen(var) + 1);
 }
 
 void	print_fromenv(char **env, char *var)
