@@ -6,7 +6,7 @@
 /*   By: elebouch <elebouch@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/05/06 09:07:41 by elebouch          #+#    #+#             */
-/*   Updated: 2018/05/15 15:00:01 by elebouch         ###   ########.fr       */
+/*   Updated: 2018/05/16 14:38:02 by elebouch         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,7 @@ static char		*cleanpath(char *path)
 	len = 0;
 	while (*path && len < MAXPATHLEN)
 	{
-		if (*path == '/')
+		if (*path == '/' && len != 0)
 		{
 			path = skip_slash(path);
 			str[len++] = '/';
