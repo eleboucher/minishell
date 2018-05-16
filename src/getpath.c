@@ -6,7 +6,7 @@
 /*   By: elebouch <elebouch@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/05/06 09:07:41 by elebouch          #+#    #+#             */
-/*   Updated: 2018/05/16 14:38:02 by elebouch         ###   ########.fr       */
+/*   Updated: 2018/05/16 15:31:28 by elebouch         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 static char		*skip_slash(char *str)
 {
-	while (*str == '/')
+	while (*str && *str == '/')
 		str++;
 	return (str);
 }
@@ -24,9 +24,13 @@ static void		prev_path(char *str, int *len)
 	if (!*len)
 		return ;
 	(*len)--;
-	str[*len] = '\0';
 	if (*len)
+	{
+		str[*len] = '\0';
 		(*len)--;
+	}
+	else
+		return ;
 	while (*len > 0 && str[*len] != '/')
 	{
 		str[*len] = '\0';
@@ -44,7 +48,7 @@ static char		*cleanpath(char *path)
 	len = 0;
 	while (*path && len < MAXPATHLEN)
 	{
-		if (*path == '/' && len != 0)
+		if (*path == '/') 
 		{
 			path = skip_slash(path);
 			str[len++] = '/';
